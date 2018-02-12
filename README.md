@@ -12,4 +12,4 @@ We appreciate, but do not require, attribution. An attribution usually includes 
 	  
 If you think your use of code examples falls outside fair use or the permission given here, feel free to contact us at <permissions@oreilly.com>.
 	  
-Please note that the examples are not production code and have not been carefully testing. They are provided "as-is" and come with no warranty of any kind.
+Please note that the examples are not production code and have not been carefully tested. They are provided "as-is" and come with no warranty of any kind.
