@@ -1,0 +1,10 @@
+configFileProvider([configFile(fileId: 'my-groovy-script', variable: 'MY_GROOVY_SCRIPT', replaceTokens:true)]) 
+{
+	sh "cat ${MY_GROOVY_SCRIPT}"
+}
+
+configFileProvider([configFile(fileId: 'my-custom-file', variable: 'MY_CUSTOM_FILE', replaceTokens:true),
+					configFile(fileId: 'my-groovy-script', variable: 'MY_GROOVY_SCRIPT', replaceTokens:true)]) 
+{
+	sh "cat ${MY_GROOVY_SCRIPT}"
+}

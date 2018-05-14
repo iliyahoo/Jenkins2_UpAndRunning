@@ -1,0 +1,33 @@
+#!groovy
+@Library('Utilities@2')_
+node ('worker_node1') {
+
+	def userInput
+	stage('Parameters') {
+		userInput = input message:
+			'Enter version changes (if any):',
+			parameters: [
+				string(defaultValue: '1', description: '', name: 'MAJOR_VERSION'),
+				string(defaultValue: '1', description: '', name: 'MINOR_VERSION'),
+				string(defaultValue: env.BUILD_NUMBER, description: '', name: 'PATCH_VERSION'),
+				string(defaultValue: 'SNAPSHOT', description: '', name: 'BUILD_STAGE')]
+		major_version = userInput.MAJOR_VERSION
+		minor_version = userInput.MINOR_VERSION
+		patch_version = userInput.PATCH_VERSION
+		build_stage = userInput.BUILD_STAGE
+	}
+		
+	stage('Source') {
+		// always run with a new workspace
+		step([$class: 'WsCleanup'])
+		// Get code from our git repository
+		checkout scm
+		stash includes: 'api/**, dataaccess/**, util/**, build.gradle'
+	}
+	stage('Compile') { // Compile and do unit testing
+		// Run gradle to execute compile and unit testing
+		gbuild3 "clean compileJava -x test"
+	}
+	stage ('Unit Test') {
+			parallel (
+				tester1: { node ('worker_node2'){

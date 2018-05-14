@@ -1,0 +1,8 @@
+stage('Unit Test') {
+	parallel (
+		tester1: { node ('worker_node1'){
+			sh "'${tool 'gradle3'}/bin/gradle' -D test.single=Test1* :api:test"}},
+		tester2: { node ('worker_node2'){
+			sh "'${tool 'gradle3'}/bin/gradle' -D test.single=Test2* :api:test"}},
+	)
+}

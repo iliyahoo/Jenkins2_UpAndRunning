@@ -1,0 +1,14 @@
+node {
+    try {
+       // do some work
+    }
+    catch(e) {
+      currentBuild.result = "FAILED"
+      throw e
+    }
+    finally {
+        mail to:"buildAdmin@mycompany.com",
+           subject:"STATUS FOR PROJECT: ${currentBuild.fullDisplayName}",
+           body: "RESULT: ${currentBuild.result}"
+    }
+}

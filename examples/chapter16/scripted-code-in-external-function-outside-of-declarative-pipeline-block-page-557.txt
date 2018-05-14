@@ -1,0 +1,11 @@
+	...
+	stage ('Artifactory') {
+	steps {
+		handleArtifacts()
+	<rest of pipeline>
+} // end of pipeline block
+
+def handleArtifacts() {
+	def server = Artifactory.server 'my-server-id'
+	// do processing
+}

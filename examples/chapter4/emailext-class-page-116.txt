@@ -1,0 +1,8 @@
+emailext body: 'body goes here',
+  recipientProviders: [[$class: 'CulpritsRecipientProvider'],
+  [$class: 'DevelopersRecipientProvider'],
+  [$class: 'RequesterRecipientProvider'],
+  [$class: 'FailingTestSuspectsRecipientProvider'],
+  [$class: 'FirstFailingBuildSuspectsRecipientProvider'],
+  [$class: 'UpstreamComitterRecipientProvider']],
+  subject: 'subject goes here'

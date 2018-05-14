@@ -1,0 +1,12 @@
+// define the secrets we want to access and the env variables
+// we want to put the retrieved values in
+def secrets = [
+  [$class: 'VaultSecret', path: 'secret/example', secretValues:[[$class: 'VaultSecretValue', envVar: 'msg', vaultKey: 'value']]]
+]
+
+// inside this block our credentials will be accessible as env variables
+wrap([$class: 'VaultBuildWrapper', vaultSecrets: secrets]) {
+   def myMsg = "The message is $msg"
+   ...
+}
+

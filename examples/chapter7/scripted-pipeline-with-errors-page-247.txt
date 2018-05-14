@@ -1,0 +1,8 @@
+@Library('Utilities') import static org.foo.Utilities.*
+node ('worker_node1') {
+   stae('Source') { // for display purposes
+      // Get some code from our Git repository
+      git 'git@diyvb:repos/gradle-greetings.git'
+   }
+   stage('Build') {
+...

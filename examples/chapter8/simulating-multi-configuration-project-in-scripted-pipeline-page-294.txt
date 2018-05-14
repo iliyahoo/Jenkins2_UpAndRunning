@@ -1,0 +1,17 @@
+def axisRegions = ["northwest","northeast","southwest"]
+def axisJobFamilies = ["developers","infrastructure","management","testing"]
+def myTasks = [:]
+for(int i=0; i< axisRegions.size(); i++) {
+	def axisRegionSetting = axisRegions[i]
+	for(int j=0; j< axisJobFamilies.size(); j++) {
+		def axisJobFamilySetting = axisJobFamilies[j]
+		myTasks["${axisRegionSetting} ${axisJobFamilySetting}"] = {
+			node(axisRegionSetting) {
+				println "Running task on job family ${axisJobFamilySetting} for region ${axisRegionSetting}"
+			}
+		}
+	}
+}
+stage ("BuildMatrix") {
+	parallel myTasks
+}

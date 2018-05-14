@@ -1,0 +1,12 @@
+node ('<node-name>') {
+	docker.withServer('tcp://<host ip>:2375') {
+		image = docker.image('bclaster/jenkins-node:1.0').pull()
+	}
+}
+
+docker.withServer('tcp://<host ip>:2375','<jenkins-cred-id>')
+
+docker.withServer("unix:///var/run/docker.sock"){
+	myImage = docker.image("bclaster/jenkins-node:1.0")
+	myImage.pull()
+}

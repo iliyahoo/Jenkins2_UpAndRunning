@@ -1,0 +1,7 @@
+node ('<node-name>') {
+	docker.withServer("tcp://<host ip>:2375") {
+		docker.withRegistry("http://<local uri>:5000") {
+			image = docker.image("my-image:latest").pull()
+		}
+	}
+}

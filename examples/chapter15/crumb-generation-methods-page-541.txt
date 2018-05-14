@@ -1,0 +1,5 @@
+wget -q --auth-no-challenge --user <userid> --password <password or user token> --output-document -'http://<jenkins url>/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)
+
+JENKINS_CRUMB=`curl --user username:password "<jenkins-url>/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,\":\",//crumb)"`
+
+http://<jenkins url>/crumbIssuer/api/xml

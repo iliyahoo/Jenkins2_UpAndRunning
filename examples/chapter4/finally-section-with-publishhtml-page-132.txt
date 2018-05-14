@@ -1,0 +1,20 @@
+finally {
+  unstash 'api-reports'
+  publishHTML (target: [
+    allowMissing: false,
+    alwaysLinkToLastBuild: false,
+    keepAll: true,
+    reportDir: 'api/build/reports/test',
+    reportFiles: 'index.html',
+    reportName: "API Unit Testing Results"
+  ])
+  unstash 'util-reports'
+  publishHTML (target: [
+    allowMissing: false,
+    alwaysLinkToLastBuild: false,
+    keepAll: true,
+    reportDir: 'util/build/reports/test',
+    reportFiles: 'index.html',
+    reportName: "Util Unit Testing Results"
+  ])
+}

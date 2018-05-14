@@ -1,0 +1,21 @@
+pipeline {
+   agent any
+   stages {
+      stage('name1') {
+         steps {
+            ...
+         }
+         post {
+            ...
+         }
+      }
+      stage('name2') {
+         steps {
+            ...
+         }
+      }
+   }
+   post {
+      ...
+   }
+}

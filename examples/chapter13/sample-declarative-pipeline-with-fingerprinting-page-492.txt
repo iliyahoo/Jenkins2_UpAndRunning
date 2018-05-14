@@ -1,0 +1,21 @@
+pipeline {
+	agent any
+	stages {
+		stage ('Source') {
+			steps {
+				git branch: 'test', url: 'git@diyvb2:/home/git/repositories/gradle-greetings.git'
+			}
+		}
+		stage('Build and Test') {
+			steps {
+				sh "${tool 'gradle4'}/bin/gradle build"
+			}
+		}
+	}
+	post {
+		always {
+			archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
+			junit 'build/test-results/**/*.xml'
+		}
+	}
+}

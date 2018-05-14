@@ -1,0 +1,19 @@
+triggers {
+   upstream(upstreamProjects: 'jobA,jobB', threshold:
+   hudson.model.Result.SUCCESS)
+}
+
+triggers { githubPush() }
+
+// Start a pipeline execution at 10 minutes past the hour
+triggers { cron(10 * * * *) }
+
+// Scan for SCM changes at 10-minute intervals
+triggers { pollSCM(*/10 * * * *) }
+
+// Start a pipeline session at some point between 0 and 30 minutes after
+// the hour
+triggers { cron(H(0,30) * * * *) }
+
+// Start a pipeline execution at 8 a.m. Monday through Friday
+triggers { cron(0 8 * * * 1-5) }

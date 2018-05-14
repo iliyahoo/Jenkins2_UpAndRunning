@@ -1,0 +1,1 @@
+hipchatSend color: 'GREEN', notify: true, message: "Build ${env.BUILD_NUMBER} completed for ${env.JOB_NAME}. Details: <a href=${env.BUILD_URL}>here</a>"

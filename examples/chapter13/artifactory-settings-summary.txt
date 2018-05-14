@@ -1,0 +1,12 @@
+def server = Artifactory.server “<name>”
+def artifactoryGradle = Artifactory.newGradleBuild()
+artifactoryGradle.tool = “<gradle tool name in Jenkins>" 
+artifactoryGradle.deployer repo:'libs-snapshot-local', server: server
+artifactoryGradle.resolver repo:'libs-release', server: server
+artifactoryGradle.usesPlugin = true | false
+def buildInfo = Artifactory.newBuildInfo()
+buildInfo.env.capture = true | false
+artifactoryGradle.deployer.deployMavenDescriptors = true | false
+artifactoryGradle.deployer.artifactDeploymentPatterns.addExclude("<file pattern>")
+artifactoryGradle.run rootDir: "/", buildFile: 'build.gradle', tasks: …
+server.publishBuildInfo buildInfo

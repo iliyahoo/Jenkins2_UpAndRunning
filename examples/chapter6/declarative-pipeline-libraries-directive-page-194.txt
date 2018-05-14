@@ -1,0 +1,8 @@
+pipeline {
+   agent any
+   libraries {
+      lib("mylib@master")
+      lib("alib")
+   }
+   stages {
+   ...

@@ -1,0 +1,11 @@
+node {
+    def response
+    stage('input') {
+       timeout(time:10, unit:'SECONDS') {
+          response = input message: 'User', 
+           parameters: [string(defaultValue: 'user1', 
+           description: 'Enter Userid:', name: 'userid')]
+       }
+       echo "Username = " + response
+    }
+}

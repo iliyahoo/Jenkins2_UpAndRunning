@@ -1,0 +1,10 @@
+stage('Assemble') { // assemble WAR file
+	def workspace = env.WORKSPACE
+	def setPropertiesProc = fileLoader.fromGit('jenkins/pipeline/updateGradleProperties','https://github.com/brentlaster/utilities.git','master', null, '')
+
+	setPropertiesProc.updateGradleProperties(
+		"${workspace}/gradle.properties",
+		"${params.MAJOR_VERSION}",
+		"${params.MINOR_VERSION}",
+		"${params.PATCH_VERSION}",
+		"${params.BUILD_STAGE}")

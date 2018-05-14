@@ -1,0 +1,7 @@
+node {
+   timedCommand.cmd = 'ls -la'
+   echo timedCommand.cmd
+   timedCommand.runCommand()
+   println "ELAPSED TIME: ${currentBuild.rawBuild.getTimestampString()}"
+   echo timedCommand.getOutput()
+}

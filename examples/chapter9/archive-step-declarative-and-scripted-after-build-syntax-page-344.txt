@@ -1,0 +1,9 @@
+
+post {
+	always {
+	archive 'build/libs/**/*.jar'
+}
+
+finally {
+	archive 'build/libs/**/*.jar'
+}

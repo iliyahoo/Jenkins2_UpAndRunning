@@ -1,0 +1,13 @@
+       timeout(time: 120, unit: 'SECONDS') {
+          waitUntil {
+             try {
+                sh "docker exec ${webContainer.id} curl
+                   --silent http://127.0.0.1:8080/roar/api/v1/registry 
+                   1>test/output/entries.txt"
+                return true
+             }
+             catch (exception) {
+                return false
+             }
+          }
+       

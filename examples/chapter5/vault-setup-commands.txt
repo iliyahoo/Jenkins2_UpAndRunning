@@ -1,0 +1,22 @@
+vault server -dev
+
+export VAULT_ADDR='http://127.0.0.1:8200'
+
+echo 'path "secret/example" {
+    capabilities = ["read", "list"]
+}' | vault policy-write jenkins-example -
+
+vault auth-enable approle
+
+vault write auth/approle/role/jenkins-example secret_id_ttl=200m token_ttl=20m token_max_tll=40m policies=jenkins-example
+
+vault read auth/approle/role/jenkins-example/role-id
+
+echo 'path "auth/approle/role/jenkins-example" {
+    capabilities = ["read", "create", "update"]
+}' | vault policy-write jenkins -
+
+vault write auth/approle/role/jenkins-example secret_id_ttl=100m token_ttl=200m token_max_ttl=300m policies=jenkins-example
+
+vault write -f auth/approle/role/jenkins-example/secret-id
+

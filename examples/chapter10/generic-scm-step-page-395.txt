@@ -1,0 +1,1 @@
+checkout([$class: 'GitSCM', branches: [[name: '*/lab1']], userRemoteConfigs: [[url: '/opt/git/pipeline.git']]])

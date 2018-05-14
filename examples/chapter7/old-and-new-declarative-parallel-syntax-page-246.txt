@@ -1,0 +1,15 @@
+
+Old:
+
+   stage ('Unit Test') {
+      steps {
+         parallel(
+            set1 : {
+
+New:
+
+   stage('Unit Test') {
+      parallel{
+         stage ('set1') {
+            agent { label 'worker_node2' }
+               steps {

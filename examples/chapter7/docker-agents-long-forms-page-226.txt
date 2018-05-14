@@ -1,0 +1,15 @@
+agent {
+   docker {
+      image "image-name"
+      label "worker-node"
+      args "-v /dir:dir"
+   }
+}
+
+agent {
+   dockerfile {
+      filename "<subdir/dockerfile name>"
+      label "<agent label>"
+      args "-v /dir:dir"
+   }
+}

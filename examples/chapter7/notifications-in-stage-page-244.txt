@@ -1,0 +1,18 @@
+stage('Build') {
+   steps {
+      gradle 'clean build'
+      ...
+   }
+   post {
+      always {
+         echo "Build stage complete"
+      }
+      failure{
+         echo "Build failed" mail body: <some text>, subject: 'Build failed!', to: 'devops@mycompany.com'
+      }
+      success {
+         echo "Build succeeded"
+         archiveArtifacts '**/*'
+      }
+   }
+}

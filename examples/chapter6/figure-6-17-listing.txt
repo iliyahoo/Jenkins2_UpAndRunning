@@ -1,0 +1,13 @@
+node {
+   def timestampProc = fileLoader.fromGit('jenkins/pipeline/timedCommand','https://github.com/brentlaster/utilities.git', 'master', null, '')
+   timestampProc.timedCommand("ls -la","command.log")
+}
+
+public timedCommand(String cmd, String logFilePath) {
+   timestamps {
+      cmdOutput = sh (script:"${cmd}", returnStdout:true).trim()
+   }
+   echo cmdOutput
+   writeFile file: "${logFilePath}", text: "${cmdOutput}"
+}
+return this;

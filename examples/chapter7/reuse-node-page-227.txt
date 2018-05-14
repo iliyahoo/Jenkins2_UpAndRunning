@@ -1,0 +1,8 @@
+pipeline {
+   agent {label 'linux'}
+
+   stage 'abc' {
+      agent {
+         docker {
+            image 'ubuntu:16.6'
+            reuseNode true

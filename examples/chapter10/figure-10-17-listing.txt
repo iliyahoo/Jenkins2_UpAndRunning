@@ -1,0 +1,18 @@
+#!groovy
+@Library('Utilities@2')_
+node ('worker_node1') {
+	try {
+		stage('Source') {
+			// always run with a new workspace
+			step([$class: 'WsCleanup'])
+			// Get code from our git repository
+			checkout scm
+			stash includes: 'api/**, dataaccess/**, util/**, build.gradle'
+		}
+		stage('Compile') { // Compile and do unit testing
+			// Run gradle to execute compile and unit testing
+			gbuild3 "clean compileJava -x test"
+		}
+		stage ('Unit Test') {
+				parallel (
+					tester1: { node ('worker_node2'){

@@ -1,0 +1,11 @@
+@Library('Utilities')_
+pipeline {
+    agent any
+    stages {
+        stage ('Input') {
+           steps {
+              getUser 'Enter response 1','Enter response 2'
+           }
+        }
+    }
+}

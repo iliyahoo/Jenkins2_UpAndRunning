@@ -1,0 +1,23 @@
+plugins {
+	id "org.sonarqube" version "2.4"
+}
+
+description = 'Example of SonarQube Scanner for Gradle Usage'
+version = '1.0'
+
+sonarqube {
+	properties {
+		property 'sonar.projectName', 'ROAR :: (Workshop) Pipeline Demo'
+		property 'sonar.projectKey', 'workshop-com.demo.pipeline'
+		property 'sonar.projectVersion', '1.0'
+		property 'sonar.sources', 'api/src,dataaccess/src,util/src,web/src'
+		property 'sonar.language', 'java'
+		property 'sonar.sourceEncoding', 'UTF-8'
+	}
+}
+
+stage('Analysis') {
+	withSonarQubeEnv('Local SonarQube') {
+		sh "/usr/share/gradle/bin/gradle sonarqube"
+	}
+}

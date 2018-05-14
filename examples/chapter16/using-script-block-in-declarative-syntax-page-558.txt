@@ -1,0 +1,10 @@
+pipeline {
+	agent any
+	stages {
+		stage ('Artifactory') {
+			steps {
+				script {
+					def server = Artifactory.server 'my-server-id'
+					server.username = "my-username"
+					<script commands processing>
+				}

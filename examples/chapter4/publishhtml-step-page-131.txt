@@ -1,0 +1,8 @@
+publishHTML (target: [
+  allowMissing: false,
+  alwaysLinkToLastBuild: false,
+  keepAll: true,
+  reportDir: 'api/build/reports/test',
+  reportFiles: 'index.html',
+  reportName: "API Unit Testing Results"
+])

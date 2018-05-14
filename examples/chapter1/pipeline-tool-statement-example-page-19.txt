@@ -1,0 +1,4 @@
+stage('Compile') { // compile and do unit testing
+    // Run gradle to execute compile
+    sh "${tool 'gradle3.2'}/bin/gradle clean build"
+}

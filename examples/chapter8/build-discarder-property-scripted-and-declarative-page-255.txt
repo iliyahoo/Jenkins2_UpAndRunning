@@ -1,0 +1,6 @@
+
+properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '3', numToKeepStr: '5')), pipelineTriggers([])])
+
+options {
+	buildDiscarder(logRotator(numToKeepStr:'5'))
+}

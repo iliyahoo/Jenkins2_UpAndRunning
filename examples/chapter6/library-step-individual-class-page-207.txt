@@ -1,0 +1,12 @@
+node ('worker_node1') {
+   stage('Source') { // Get code
+      // Get code from the source repository
+      git url: 'http://github.com/brentlaster/greetings.git',
+      branch: 'demo'
+   }
+   stage('Compile') { // Compile and do unit testing
+      // Run Gradle
+      library('Utilities').org.demo.BuildUtils3.timedGradleBuild
+      this, 'clean build'
+   }
+}

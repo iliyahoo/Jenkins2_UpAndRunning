@@ -1,0 +1,15 @@
+pipeline {
+	agent { label 'docker-cloud-gradle'}
+	stages {
+		stage('Source') {
+			steps {
+				git url: 'http://github.com/brentlaster/greetings', branch: 'demo'
+			}
+		}
+		stage('Build') {
+			steps {
+				sh 'gradle build'
+			}
+		}
+	}
+}

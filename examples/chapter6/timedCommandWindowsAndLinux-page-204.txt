@@ -1,0 +1,17 @@
+// vars/timedCommandWindows.groovy
+def call(Closure commands) {
+   node('windows') {
+      timestamps {
+         commands()
+      }
+   }
+}
+
+// vars/timedCommandLinux.groovy
+def call(Closure commands) {
+   node('linux') {
+      timestamps {
+         commands()
+      }
+   }
+}

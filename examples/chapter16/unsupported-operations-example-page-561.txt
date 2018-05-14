@@ -1,0 +1,7 @@
+node {
+	stage ('iterate') {
+		(1..4).each {
+			println "Iteration ${it}"
+		}
+	}
+}

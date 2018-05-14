@@ -1,0 +1,17 @@
+// org.demo.buildUtils
+package org.demo
+class buildUtils {
+   static def timedGradleBuild(script,tasks) {
+      def gradleHome = script.tool 'gradle3.2'
+      script.sh "echo Building for ${script.env.BUILD_TAG}"
+      script.timestamps {
+         script.sh "${gradleHome}/bin/gradle ${tasks}"
+      }
+   }
+}
+
+@Library('<library-name>') import static org.demo.buildUtils.*
+node {
+   git "<gradle project to clone>"
+   timedGradleBuild this, 'clean build'
+}

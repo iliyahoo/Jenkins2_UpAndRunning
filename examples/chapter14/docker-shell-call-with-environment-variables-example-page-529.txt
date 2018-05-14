@@ -1,0 +1,7 @@
+try {
+	stage ("Run Tests") {
+		sh "docker run --privileged --rm -v '${env.WORKSPACE}:${env.WORKSPACE}' --name '${env.BUILD_TAG}' ${myImg.id} /bin/sh -c 'cd ${env.WORKSPACE}/gradle-greetings && gradle test'"
+	}
+} finally {
+	sh "docker rmi -f ${myImg.id} ||:"
+}

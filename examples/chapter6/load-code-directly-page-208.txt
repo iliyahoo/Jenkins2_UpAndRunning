@@ -1,0 +1,13 @@
+def call(String cmd, String logFilePath) {
+   timestamps {
+      cmdOutput = sh (script:"${cmd}", returnStdout:true).trim()
+   }
+   echo cmdOutput
+   writeFile file: "${logFilePath}", text: "${cmdOutput}"
+}
+return this;
+
+node {
+   def myProc = load '/home/diyuser2/timedCommand2.groovy'
+   myProc 'ls -la', 'command.log'
+}

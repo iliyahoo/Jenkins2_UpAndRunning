@@ -1,0 +1,13 @@
+def promotionConfig = [
+	// Required
+	'buildName' : buildInfo.<name>,
+	'buildNumber' : buildInfo.<number>,
+	'targetRepo' : '<target repository>'
+	// Optional
+	'comment' : '<message>'
+	'sourceRepo' : '<source repository>'
+	'status' : '<status label>',
+	'includeDependencies' : <true | false>,
+	'copy' : <true | false>,
+	'failFast' : <true | false>
+]

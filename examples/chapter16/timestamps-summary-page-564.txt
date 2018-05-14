@@ -1,0 +1,8 @@
+
+// scripted
+timestamps {
+	<code/steps to time>
+}
+
+// declarative
+options { timestamps() }

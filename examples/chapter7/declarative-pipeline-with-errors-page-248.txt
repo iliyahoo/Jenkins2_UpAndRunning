@@ -1,0 +1,11 @@
+pipeline {
+  // ensure we have the needed tools
+  // run on worker node 1
+  agent label:''
+     stages {
+        stae('Source') {
+           git branch: 'test', url: 'git@diyvb:repos/gradle-greetings.git'
+           stash name: 'test-sources', includes: 'build.gradle,src/test/'
+        }
+        stage('Build')
+...

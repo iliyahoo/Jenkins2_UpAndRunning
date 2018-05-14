@@ -1,0 +1,2 @@
+
+properties([[$class: 'JobPropertyImpl', throttle: [count: 1, durationName: 'hour']], pipelineTriggers([])])

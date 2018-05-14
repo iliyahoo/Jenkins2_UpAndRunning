@@ -1,0 +1,9 @@
+java -jar jenkins-cli.jar [-s JENKINS_URL] [<global options>] <command> [<command options>] [<arguments>]
+
+java -jar jenkins-cli.jar -s http://localhost:8080 -auth jenkins2:a3c7816cdf3874fca6eb9544b7b26546 build daily-job-1 -p id=myID -s -v
+
+java -jar jenkins-cli.jar -s http://localhost:8080 -auth @.jenkins-access build daily-job-1 -p id=myID -s -v
+
+java -jar Downloads/jenkins-cli.jar -s http://localhost:8080 -ssh -user diyuser2 build daily-job-1 -p id=myID -s -v
+
+java -jar Downloads/jenkins-cli.jar -s http://localhost:8080 -remoting build daily-job-1 -p id=myID -s -v

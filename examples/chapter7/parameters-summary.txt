@@ -1,0 +1,28 @@
+parameters { booleanParam(defaultValue: false, description: 'test run?', name: 'testRun')}
+
+parameters{ choice(choices: 'Windows-1\nLinux-2', description: 'Which platform?', name: 'platform')}
+
+parameters{ file(fileLocation: '', description: 'Select the file to upload')}
+
+parameters{ text(defaultValue: 'No message', description: 'Enter your message', name: 'userMsg')
+
+parameters{ password(defaultValue: "userpass1", description: 'User password?', name: 'userPW')}
+
+parameters{ run(name: "Last success", description:'Last successful project', project: 'project1', filter: 'Successful Builds')}
+
+parameters{ string(defaultValue: "Linux", description: 'What platform?', name: 'platform')}
+
+pipeline {
+	agent any
+    parameters{
+       string(defaultValue: "maintainer",
+       description: 'Enter user role:', name: 'userRole')
+    }
+	stages {
+		stage('listVals') {
+			steps {
+				echo "User's role = ${params.userRole}"
+			}
+		}
+	}
+}

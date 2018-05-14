@@ -1,0 +1,11 @@
+curl -v http://localhost:8080/login 2>&1 | grep SSH-Endpoint | cut -d':' -f3
+
+ssh -l <username if needed> -p 32881 localhost help
+
+ssh -l diyuser2 -p 32881 localhost help build
+
+ssh -l diyuser2 -p 32881 localhost build job-1 -p id=myID -s -v
+
+ssh -l diyuser2 -p 32881 localhost console daily-job-1
+
+ssh -l diyuser2 -p 32881 localhost build daily-job-1

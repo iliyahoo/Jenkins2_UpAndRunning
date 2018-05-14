@@ -1,0 +1,23 @@
+http://<jenkins-url>/job/job1/api/xml
+
+http://<jenkins-url>/job/counter1/api/json?pretty=true
+
+http://<jenkins-url>/job/counter1/api/python?pretty=true
+
+http://<jenkins-url>/api/xml?depth=2
+
+tree=<keyname>[<field1>,<field2>,<subkeyname>[<subfield1>]]
+
+http://<jenkins-url>/api/json?pretty=true&tree=jobs[name,lastBuild[number,duration,timestamp,result,changeSet[items[msg,author[fullName]]]]]
+
+curl -I -X POST http://<userid>:<user pw or token>@<jenkins url>/job/<jobname>/build -H "<crumb value>"
+
+curl -I -X POST http://jenkins2:a3c7816cdf3874fca6eb9544b7b26546@localhost:8080/job/counter1/build -H "Jenkins-Crumb:e894bf4d15e8165726b50b0aacb579f0"
+
+curl -X POST http://<userid>:<user pw or token>@<jenkins url>/job/<jobname>/build --data-urlencode json='{"parameter": [{"name":"<name>", "value":"<value>"}]}' -H "Jenkins-Crumb:e894bf4d15e8165726b50b0aacb579f0"
+
+curl -X POST http://jenkins2:a3c7816cdf3874fca6eb9544b7b26546@localhost:8080/job/counter1/build --data-urlencode json='{"parameter": [{"name":"param1", "value":"ABC"}]}' -H "Jenkins-Crumb:e894bf4d15e8165726b50b0aacb579f0"
+
+curl http://<userid>:<pw or user token>@<jenkins url>/job/<job name>/build?token=myToken -H "Jenkins-Crumb:e894bf4d15e8165726b50b0aacb579f0"
+
+curl http://<userid>:<pw or user token>@<jenkins url>/job/<job name>/build?token=myToken --data-urlencode json='{"parameter": [{"name":"param1", "value":"ABC"}]}' -H "Jenkins-Crumb:e894bf4d15e8165726b50b0aacb579f0"

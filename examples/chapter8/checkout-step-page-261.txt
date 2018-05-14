@@ -1,0 +1,2 @@
+
+checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [],submoduleCfg: [], userRemoteConfigs: [[credentialsId:'localUser', url:'git@diyvb2:/home/git/repositories/shared_libraries']]])

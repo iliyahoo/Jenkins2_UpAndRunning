@@ -1,0 +1,9 @@
+def server = Artifactory.server 'LocalArtifactory'
+server.username = "my-username"
+pipeline {
+	agent any
+	stages {
+		stage ('Artifactory') {
+			steps {
+				echo "${server.username}"
+				...

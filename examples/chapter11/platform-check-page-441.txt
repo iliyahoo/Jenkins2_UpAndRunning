@@ -1,0 +1,6 @@
+if (isUnix()) {
+	sh "ls -latr"
+}
+else {
+	bat "dir /o:d"
+}

@@ -1,0 +1,11 @@
+node('worker_node1') {
+	stage ('build-image') {
+		docker.withTool('local') {
+			docker.withServer(<docker daemon connection>){
+				sh 'docker images'
+				myImage = docker.image("bclaster/jenkins-node:1.0")
+				myImage.pull()
+			}
+		}
+	}
+}

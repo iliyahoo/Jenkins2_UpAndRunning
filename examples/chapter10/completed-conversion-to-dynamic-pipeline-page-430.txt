@@ -1,0 +1,54 @@
+#!groovy
+pipeline {
+	agent{ label 'worker_node1'}
+	libraries {
+		lib('Utilities@1.5')
+	}
+	stages {
+		stage('Source') {
+			steps {
+				cleanWs()
+				checkout scm
+				stash name: 'test-sources', includes: 'build.gradle, src/test/'
+			}
+		}
+		stage('Build') {
+			// run the gradle build
+			steps {
+				gbuild2 'clean build -x test'
+			}
+		}
+		stage ('Test') {
+			// execute required unit tests in parallel
+			steps {
+				parallel (
+					worker2: { node ('worker_node2'){
+						// always run with a new workspace
+						cleanWs()
+						unstash 'test-sources'
+						gbuild2 '-D test.single=TestExample1 test'
+					}},
+					worker3: { node ('worker_node3'){
+						// always run with a new workspace
+						cleanWs()
+						unstash 'test-sources'
+						gbuild2 '-D test.single=TestExample3 test'
+					}},
+				)
+			}
+		}
+	} // end stages
+	post {
+		always {
+			echo "Build stage complete"
+		}
+		failure {
+			echo "Build failed"
+			mail body: 'build failed', subject: 'Build failed!', to: '<your email address>'
+		}
+		success {
+			echo "Build succeeded"
+			mail body: 'build succeeded', subject: 'Build Succeeded', to: '<your email address>'
+		}
+	}
+} // end pipeline

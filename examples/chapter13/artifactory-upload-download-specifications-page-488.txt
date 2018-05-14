@@ -1,0 +1,15 @@
+def downloadInfo = """ {
+	"files": [
+		{
+			"pattern": "<artifactory repo name>/<file-structure-to-download-within-repo>","target": "<location to download into>"
+		}
+	]
+}"""
+
+def uploadInfo = """ {
+	"files": [
+		{
+			"pattern": "<file-structure-to-upload>", "target":"<artifactory repo name>/<location-in-repository-to-upload-into>"
+		}
+	]
+}"""

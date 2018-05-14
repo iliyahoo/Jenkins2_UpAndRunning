@@ -1,0 +1,1 @@
+slackSend "Build ${env.BUILD_NUMBER} completed for ${env.JOB_NAME}."

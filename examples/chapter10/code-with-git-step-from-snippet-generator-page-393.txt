@@ -1,0 +1,5 @@
+node ('worker_node1'){
+	stage('Source'){
+		git branch: 'lab1', credentialsId: 'jenkins2-ssh', url: '/opt/git/pipeline.git'
+	}
+}

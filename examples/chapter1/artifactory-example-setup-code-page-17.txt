@@ -1,0 +1,14 @@
+// Define new Artifactory server based on our configuration
+
+def  server = Artifactory.server "LocalArtifactory"
+
+// Create a new Artifactory for Gradle object
+
+def artifactoryGradle = Artifactory.newGradleBuild()
+
+artifactoryGradle.tool = "gradle4" // Tool name from Jenkins configuration
+
+artifactoryGradle.deployer repo:'libs-snapshot-local', server:server
+
+artifactoryGradle.resolver repo:'remote-repos', server:server
+        

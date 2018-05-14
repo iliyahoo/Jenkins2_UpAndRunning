@@ -1,0 +1,11 @@
+// org.demo.buildUtils
+package org.demo
+def timedGradleBuild(tasks) {
+   timestamps {
+      sh "${tool 'gradle3.2'}/bin/gradle ${tasks}"
+   }
+}
+
+def myUtils = new org.demo.buildUtils()
+git "<gradle project to clone>"
+myUtils.timedGradleBuild("clean build")

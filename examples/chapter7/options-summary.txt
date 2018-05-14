@@ -1,0 +1,19 @@
+options { buildDiscarder(logRotator(numToKeepStr:’3’))} 
+
+options { skipDefaultCheckout() }
+
+options { buildDiscarder(logRotator(numToKeepStr:'10')) }
+
+options { disableConcurrentBuilds() }
+
+options { retry(2) }
+
+options { skipStagesAfterUnstable()}
+
+options { timeout(time: 15, unit: 'MINUTES') }
+
+timeout(time: 2, unit: 'MINUTES') {
+   // pipeline processing
+}
+
+options { timestamps() }

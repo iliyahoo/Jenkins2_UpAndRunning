@@ -1,0 +1,2 @@
+
+properties([[$class: 'GithubProjectProperty', displayName: '', projectUrlStr: 'http://github.com/brentlaster/sampleproject/'], pipelineTriggers([])]

@@ -1,0 +1,7 @@
+def configuration = [$class: 'VaultConfiguration', vaultUrl: 'http://127.0.0.1:8200', vaultCredentialId: 'approle-example']
+
+// inside this block our credentials will be accessible as env variables
+wrap([$class: 'VaultBuildWrapper', configuration: configuration, vaultSecrets: secrets]) {
+   def myMsg = "The message is $msg"
+   ...
+}

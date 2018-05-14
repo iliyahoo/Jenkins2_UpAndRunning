@@ -1,0 +1,6 @@
+agent {
+   label {
+      label "<labelname>"
+      customWorkspace "<desired directory>"
+   }
+}

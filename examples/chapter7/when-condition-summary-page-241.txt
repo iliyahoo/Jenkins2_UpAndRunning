@@ -1,0 +1,42 @@
+stage('debug_build') {
+	when {
+		branch 'test'
+	}
+...
+}
+
+stage('debug_build') {
+	when {
+		environment name: "BUILD_CONFIG", value: "DEBUG"
+	}
+...
+}
+
+stage('debug_build') {
+	when {
+		expression {
+			echo "Checking for debug build parameter..."
+			expression { return params.DEBUG_BUILD }
+	}
+...
+}
+
+when {
+	allOf {
+		environment name: "BUILD_CONFIG", value: "DEBUG"
+		branch 'test'
+	}
+}
+
+when {
+	anyOf {
+		environment name: "BUILD_CONFIG", value: "DEBUG"
+		branch 'test'
+	}
+}
+
+when {
+	not {
+		branch 'prod'
+	}
+}

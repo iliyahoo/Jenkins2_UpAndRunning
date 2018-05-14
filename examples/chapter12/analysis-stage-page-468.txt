@@ -1,0 +1,6 @@
+stage('Analysis') {
+	def scannerLoc = tool 'sq-scanner';
+	withSonarQubeEnv('Local SonarQube') {
+		sh "${scannerLoc}/bin/sonar-scanner"
+	}
+}

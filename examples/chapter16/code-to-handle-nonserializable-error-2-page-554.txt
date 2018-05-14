@@ -1,0 +1,13 @@
+import groovy.json.JsonSlurper
+@NonCPS
+def getJSON(def sourceFile) {
+	def MY_REGEX = /.*.json/
+	match = (sourceFile =~ MY_REGEX)
+	// handle matching logic
+	// ...
+	new JsonSlurper().parseText(sourceFile)
+	match = null
+}
+node ('worker_node1') {
+	def data = getJSON(readFile("/home/diyuser2/output.json"))
+}

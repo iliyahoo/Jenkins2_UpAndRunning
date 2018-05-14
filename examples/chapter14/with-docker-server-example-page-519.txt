@@ -1,0 +1,6 @@
+node ('<node-name>') {
+	withDockerServer([credentialsId: '<jenkins-cred-id>', uri: 'tcp://<host ip>:2375'])
+	{
+		image = docker.image("bclaster/jenkins-node:1.0").pull()
+	}
+}

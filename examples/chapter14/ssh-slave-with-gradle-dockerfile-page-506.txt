@@ -1,0 +1,3 @@
+FROM jenkinsci/ssh-slave
+RUN apt-get -y update && apt-get -y install gradle
+RUN echo 2 | update-alternatives --config java

@@ -1,0 +1,5 @@
+fileOperations([
+	fileCreateOperation(fileContent: 'This is a text file.', fileName: 'file1.txt'),
+	fileCopyOperation(excludes: '', includes: 'file1.txt', targetLocation: 'file2.txt'),
+	fileDeleteOperation(includes: 'file1.txt')
+])

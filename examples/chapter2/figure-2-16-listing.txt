@@ -1,0 +1,10 @@
+node ('worker1') {
+   stage('Source') {
+      // Get some code from our Git repository
+      git 'https://github.com/brentlaster/gradle-greetings.git'
+   }
+   stage('Build') {
+      // TO-DO: Execute the gradle build associated with this project
+      sh 'echo gradle build will go here'
+   }
+}

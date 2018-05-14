@@ -1,0 +1,9 @@
+node {
+	sh 'export NAME=Jenkins; echo Hello, $NAME from shell!'
+	sh '''#!/usr/bin/perl
+	my $name = "Jenkins";
+	print "Hello, $name from Perl!\n";'''
+	sh '''#!/usr/bin/python
+name="Jenkins"
+print('Hello {} from Python!'.format(name))'''
+}

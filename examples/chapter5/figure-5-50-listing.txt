@@ -1,0 +1,17 @@
+node {
+   def sshRepodef = 'git@diyvb:repos/shared-libraries.git'
+   
+   stage('Get Source') {
+      git url: sshRepodef
+   }
+
+   stage('Update Source') {
+       sh "git config user.name diyuser"
+       sh "git config user.email diyuser@localhost"
+	   
+	   sshagent(['03463f1a-bddd-48cc-b1e0-575bfa9b721f']) {
+		   sh "git tag -a ${env.BUILDTAG} -m 'Demonstrate push of tags'"
+		   sh "git push ${sshRepodef} --tags"
+	   }
+   }
+}

@@ -1,0 +1,12 @@
+stage ("Get Source") {
+	// run a command to get the source code down
+	myImg.inside('-v /home/git/repos:/home/git/repos') {
+		sh "rm -rf gradle-greetings"
+		sh "git clone --branch test /home/git/repos/gradle-greetings.git"
+	}
+}
+stage ("Run Build") {
+	myImg.inside() {
+		sh "cd gradle-greetings && gradle -g /tmp clean build -x test"
+	}
+}

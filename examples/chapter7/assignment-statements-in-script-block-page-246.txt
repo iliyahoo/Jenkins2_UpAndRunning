@@ -1,0 +1,8 @@
+stage('stage1') {
+   <declarative code>
+   script {
+      def server = Artifactory.server 'my-server-id'
+      def rtGradle = Artifactory.newGradleBuild()
+      rtGradle.tool = 'gradle tool name'
+   }
+   <declarative code>

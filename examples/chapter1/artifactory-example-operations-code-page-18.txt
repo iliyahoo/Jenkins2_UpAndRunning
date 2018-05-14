@@ -1,0 +1,23 @@
+
+// buildInfo configuration
+
+def buildInfo = Artifactory.newBuildInfo()
+
+buildInfo.env.capture = true
+
+// Deploy Maven Descriptors to Artifactory
+
+artifactoryGradle.deployer.deployMavenDescriptors = true
+
+// extra Gradle configurations
+artifactoryGradle.deployer.artifactDeploymentPatterns.addExclude("*.jar")
+        
+artifactoryGradle.usesPlugin = false 
+        
+// run the Gradle piece to deploy
+
+artifactoryGradle.run buildFile: 'build.gradle', tasks: 'clean artifactoryPublish', buildInfo: buildInfo
+
+// publish build info 
+
+server.publishBuildInfo buildInfo

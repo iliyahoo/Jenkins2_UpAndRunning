@@ -1,0 +1,7 @@
+node ('master') {
+	withDockerServer([credentialsId: '<jenkins-cred-id>', uri: 'tcp://<host ip>:2375']) {
+		withDockerRegistry([credentialsId: '<jenkins-registry-creds>', url: 'http://<local uri>']) {
+			image = docker.image("my-image:latest").pull()
+		}
+	}
+}

@@ -1,0 +1,5 @@
+pipeline {
+	agent{label 'worker_node1'}
+	environment {
+		COMPLETED_MSG = "Build done!"
+	}

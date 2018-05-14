@@ -1,0 +1,9 @@
+node {
+	print pwd()
+	ws ('myWorkspace') {
+		print pwd()
+		ws ('myWorkspace') {
+			print pwd()
+		}
+	}
+}

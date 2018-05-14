@@ -1,0 +1,13 @@
+// vars/timedCommand3
+def call(Closure commands) {
+   timestamps {
+      commands()
+   }
+}
+
+timedCommand3 {
+   def content = readFile file: '<path to huge datafile>'
+   sh "<some processing on content>"
+   writeFile file: '<path to transformed file>', text: content
+   echo "Done"
+}

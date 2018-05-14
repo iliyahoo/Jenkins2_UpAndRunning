@@ -1,0 +1,3 @@
+withEnv(["PATH+GRADLE=${tool 'gradle3'}/bin", 'USER=Jenkins2']) {
+	sh 'echo PATH = $PATH'
+}

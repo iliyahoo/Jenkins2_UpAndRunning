@@ -1,0 +1,13 @@
+node {
+   try {
+      sendEmailStarted()
+      stage('Source') {...}
+      stage('Build') {...}
+      ...
+      sendEmailSuccess()
+   } catch (err) {
+      currentBuild.result = "FAILED"
+      sendEmailFail()
+      throw err
+   }
+}

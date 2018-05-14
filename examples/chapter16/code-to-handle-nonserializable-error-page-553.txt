@@ -1,0 +1,8 @@
+import groovy.json.JsonSlurper
+@NonCPS
+def getJSON(def sourceFile) {
+	new JsonSlurper().parseText(sourceFile)
+}
+node ('worker_node1') {
+	def data = getJSON(readFile("/home/diyuser2/output.json"))
+}

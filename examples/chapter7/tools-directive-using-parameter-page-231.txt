@@ -1,0 +1,9 @@
+pipeline {
+   agent any
+   parameters {
+      string(name: 'gradleTool', defaultValue: 'gradle3',
+      description: 'Gradle Version')
+   }
+   tools {
+      gradle "${params.gradleTool}"
+   }
